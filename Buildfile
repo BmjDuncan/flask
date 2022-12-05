@@ -1,4 +1,4 @@
-docker build -t flaskapp .
+docker build -t flask .
 docker tag flaskapp bmjduncan/flaskapp
 docker push bmjduncan/flaskapp
 docker stop flaskapp
@@ -6,4 +6,4 @@ docker rm flaskapp
 docker stop some-mysql
 docker rm some-mysql
 docker run -p 3306:3306 --name some-mysql -e MYSQL_ROOT_PASSWORD=dacjd156n. -d mysql:8.0
-docker run -p 80:5000 -d --name flaskapp --link some-mysql:some-mysql acobley/flaskapp
+docker run -p 80:5000 -d --name flaskapp --link some-mysql:some-mysql bmjduncan/flaskapp
