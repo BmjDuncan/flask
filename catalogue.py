@@ -74,7 +74,7 @@ def cat_page():
                       uuid=index[key][key2]  
               html=html+'<h3>'+name+'</h3>'
               html=html+'<a href="http://34.79.76.75/Video/'+uuid+'">'
-              html=html+'<img src="http://34.79.76.75/www/html/pics/'+thumb+'">'
+              html=html+'<img src="http://34.79.76.75/pics/'+thumb+'">'
               html=html+"</a>"        
               print("=======================")
 
