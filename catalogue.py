@@ -69,16 +69,16 @@ def cat_page():
              for key in index:
 
                  if (key !="_id"):
-                    if cat["category"] in index[key]["category"]:
-                        name=index[key]["Name"]
-                        thumb=index[key]["thumb"]
-                        uuid=index[key]["uuid"]
+                     if cat["category"] in index[key]["category"]:
+                         name=index[key]["Name"]
+                         thumb=index[key]["thumb"]
+                         uuid=index[key]["uuid"]
 
-                        html=html+'<h3>'+name+'</h3>'
-                        ServerIP=request.host.split(':')[0]
-                        html=html+'<a href="http://'+ServerIP+'/Video/'+uuid+'">'
-                        html=html+'<img src="http://34.79.49.178/pics/'+thumb+'">'
-                        html=html+"</a>"
+                         html=html+'<h3>'+name+'</h3>'
+                         ServerIP=request.host.split(':')[0]
+                         html=html+'<a href="http://'+ServerIP+'/Video/'+uuid+'">'
+                         html=html+'<img src="http://34.79.49.178/pics/'+thumb+'">'
+                         html=html+"</a>"
 
     return html
 
