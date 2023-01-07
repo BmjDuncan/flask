@@ -74,7 +74,7 @@ def cat_page():
                         name=index[key]["Name"]
                         thumb=index[key]["thumb"]
                         uuid=index[key]["uuid"]
-                        html=gtml+'<div style="float:left;margin-right:10px;">'
+                        html=html+'<div style="float:left;margin-right:10px;">'
                         html=html+'<p style="text-align:center;">'+name.title()+'<p>'
                         ServerIP=request.host.split(':')[0]
                         html=html+'<a href="http://'+ServerIP+'/Video/'+uuid+'">'
