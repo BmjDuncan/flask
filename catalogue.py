@@ -63,6 +63,7 @@ def cat_page():
     html="<h1> Your Videos</h1>"
     for cat in jResp2:
         html=html+'<h2>'+cat["category"].title()+'</h2>'
+        html=html+'<div>'
         for index in jResp:
         #print (json.dumps(index))
             #print ("----------------")
@@ -73,13 +74,14 @@ def cat_page():
                         name=index[key]["Name"]
                         thumb=index[key]["thumb"]
                         uuid=index[key]["uuid"]
-
-                        html=html+'<h3>'+name+'</h3>'
+                        html=gtml+'<div style="float:left;margin-right:10px;">'
+                        html=html+'<p style="text-align:center;">'+name.title()+'<p>'
                         ServerIP=request.host.split(':')[0]
                         html=html+'<a href="http://'+ServerIP+'/Video/'+uuid+'">'
                         html=html+'<img src="http://34.79.49.178/pics/'+thumb+'">'
                         html=html+"</a>"
-
+                        html=html+'</div>'
+        html=html+'</div>'
     return html
 
 
