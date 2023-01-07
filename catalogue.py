@@ -63,7 +63,7 @@ def cat_page():
     html="<h1> Your Videos</h1>"
     for cat in jResp2:
         html=html+'<h2>'+cat["category"].title()+'</h2>'
-        html=html+'<div>'
+        html=html+'<div style=float:clear>'
         for index in jResp:
         #print (json.dumps(index))
             #print ("----------------")
