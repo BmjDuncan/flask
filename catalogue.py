@@ -77,7 +77,7 @@ def cat_page():
                            thumb=index[key][key2]
                        if (key2=="uuid"):
                            uuid=index[key][key2] 
-                       if (index[key][key2]==cat[0]):
+                       if (index[key][key2]==cat[1]):
                              html=html+'<h3>'+name+'</h3>'
                              ServerIP=request.host.split(':')[0]
                              html=html+'<a href="http://'+ServerIP+'/Video/'+uuid+'">'
