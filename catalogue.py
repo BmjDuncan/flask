@@ -64,7 +64,8 @@ def cat_page():
     for cat in jResp2:
         for subcat in cat:
             if (subcat=="category"):
-                 html=html+'<h2>'+cat[subcat]+'</h2>'
+                 for subsubcat in cat[subcat]:
+                 html=html+'<h2>'+subsubcat+'</h2>'
                  for index in jResp:
                  #print (json.dumps(index))
                      print ("----------------")
@@ -80,7 +81,7 @@ def cat_page():
                                     thumb=index[key][key2]
                                 if (key2=="uuid"):
                                     uuid=index[key][key2]
-                                if (index[key][key2]==cat[subcat]):
+                                if (index[key][key2]==subsubcat):
                                     html=html+'<h3>'+name+'</h3>'
                                     ServerIP=request.host.split(':')[0]
                                     html=html+'<a href="http://'+ServerIP+'/Video/'+uuid+'">'
