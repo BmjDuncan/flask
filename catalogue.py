@@ -62,28 +62,29 @@ def cat_page():
     print (type(jResp))
     html="<h2> Your Videos</h2>"
     for cat in jResp2:
-        html=html + "<h2>'+cat+'</h2>"
-    for index in jResp:
-       #print (json.dumps(index))
-       print ("----------------")
-       for key in index:
+        for subcat in cat:
+            for index in jResp:
+            #print (json.dumps(index))
+            print ("----------------")
+                for key in index:
 
-           if (key !="_id"):
-              print (index[key])
-              for key2 in index[key]:
-                  print (key2,index[key][key2])
-                  if (key2=="Name"):
-                      name=index[key][key2]
-                  if (key2=="thumb"):
-                      thumb=index[key][key2]
-                  if (key2=="uuid"):
-                      uuid=index[key][key2] 
-                        html=html+'<h3>'+name+'</h3>'
-                        ServerIP=request.host.split(':')[0]
-                        html=html+'<a href="http://'+ServerIP+'/Video/'+uuid+'">'
-                        html=html+'<img src="http://34.79.49.178/pics/'+thumb+'">'
-                        html=html+"</a>"        
-                        print("=======================")
+                    if (key !="_id"):
+                       print (index[key])
+                       for key2 in index[key]:
+                           print (key2,index[key][key2])
+                           if (key2=="Name"):
+                               name=index[key][key2]
+                           if (key2=="thumb"):
+                               thumb=index[key][key2]
+                           if (key2=="uuid"):
+                               uuid=index[key][key2]
+                           if (index[key][key2]==subcat):
+                               html=html+'<h3>'+name+'</h3>'
+                               ServerIP=request.host.split(':')[0]
+                               html=html+'<a href="http://'+ServerIP+'/Video/'+uuid+'">'
+                               html=html+'<img src="http://34.79.49.178/pics/'+thumb+'">'
+                               html=html+"</a>"        
+                               print("=======================")
 
     return html
 
