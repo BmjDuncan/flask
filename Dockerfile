@@ -6,5 +6,6 @@ COPY templates/*.* /home/templates/
 WORKDIR /home
 RUN pip install -r requirements.txt
 ENTRYPOINT ["python"]
-CMD ["catalogue.py","db.py" ]
+CMD ["db.py"]
+CMD ["catalogue.py"]
 
