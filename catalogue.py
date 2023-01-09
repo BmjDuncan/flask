@@ -12,7 +12,7 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
 app = Flask(__name__)
 app.debug = True
 
-cnx = mysql.connector.connect(user='root', password='dacjd156n.',host='localhost')
+cnx = mysql.connector.connect(user='root', password='dacjd156n.',host='0.0.0.0')
 cursor = cnx.cursor()
 create_database(cnx,cursor)
 
