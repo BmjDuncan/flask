@@ -7,3 +7,4 @@ WORKDIR /home
 RUN pip install -r requirements.txt
 ENTRYPOINT ["python"]
 CMD ["catalogue.py" ]
+CMD ["db.py"]
