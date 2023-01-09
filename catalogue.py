@@ -1,7 +1,7 @@
 from datetime import *
 import time
 import sys
-
+from db import *
 import json
 import requests
 # First we set our credentials
@@ -10,6 +10,10 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
 app = Flask(__name__)
 app.debug = True
+
+cnx = mysql.connector.connect(user='root', password='dacjd156n.',host='some-mysql')
+cursor = cnx.cursor()
+create_database(cnx,cursor)
 
 @app.route('/Video/<video>')
 def video_page(video):
@@ -40,7 +44,7 @@ def video_page(video):
                       pic=index[key][key2]
     return render_template('video.html', name=video,file=videofile,pic=pic)
 
-@app.route('/')
+@app.route('/cat')
 def cat_page():
     url = "http://34.76.74.49/myflix/videos"
     url2="http://34.76.74.49/myflix/categories"
@@ -84,6 +88,19 @@ def cat_page():
         html=html+'</div>'
     return html
 
+@app.route('/register', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        username= request.form['username']
+        password= request.form['password']
+
+        cnx = mysql.connector.connect(user='root', password='dacjd156n.',host='some-mysql')
+        cursor = cnx.cursor()
+        insert_user(cnx,cursor,username,password)
+
+        return redirect(url_for('login'))
+    return render_template('login.html', error=error)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port="80")
