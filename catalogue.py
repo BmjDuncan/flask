@@ -4,6 +4,7 @@ import sys
 import json
 import requests
 import mysql
+import mysql.connector
 # First we set our credentials
 
 from flask import Flask, request, session, g, redirect, url_for, abort, \
