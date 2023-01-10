@@ -13,9 +13,10 @@ TABLES['key'] = (
     ") ENGINE=InnoDB")
 
 mydb = mysql.connector.connect(
-  host="34.79.241.61",
+  host=34.79.241.61,
   user="root",
-  password="goose"
+  password="goose",
+  port=3306
 )
 
 mycursor = mydb.cursor()
