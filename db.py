@@ -11,6 +11,7 @@ TABLES['key'] = (
     "  keynum varchar(64) NOT NULL,"
     "  PRIMARY KEY (ID)"
     ") ENGINE=InnoDB")
+CREATE USER 'root'@'localhost' IDENTIFIED BY 'goose';
 
 def create_database(cnx,cursor):
     print ("Trying database creation")
