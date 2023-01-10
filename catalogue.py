@@ -92,7 +92,7 @@ def login():
         username= request.form['username']
         password= request.form['password']
 
-        cnx = mysql.connector.connect(user='root', password='goose')
+        cnx = mysql.connector.connect(host="10.132.0.24", user='root', password='goose')
         cursor = cnx.cursor()
         insert_user(cnx,cursor,username,password)
 
