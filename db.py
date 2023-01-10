@@ -13,6 +13,7 @@ TABLES['key'] = (
     ") ENGINE=InnoDB")
 
 mydb = mysql.connector.connect(
+  host="10.132.0.24",
   user="root",
   password="goose",
   port=3306
