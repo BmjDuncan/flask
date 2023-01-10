@@ -1,6 +1,7 @@
 from datetime import *
 import time
 import sys
+from db import *
 import json
 import requests
 import mysql
@@ -91,7 +92,7 @@ def login():
         username= request.form['username']
         password= request.form['password']
 
-        cnx = mysql.connector.connect(user='root', password='goose',host='localhost')
+        cnx = mysql.connector.connect('34.77.94.242', 'root', 'goose')
         cursor = cnx.cursor()
         insert_user(cnx,cursor,username,password)
 
