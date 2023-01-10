@@ -12,7 +12,7 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
 app = Flask(__name__)
 app.debug = True
 
-cnx = mysql.connector.connect(user='root', password='dacjd156n.',host='127.0.0.1')
+cnx = mysql.connector.connect(user='root', password='goose',host='localhost')
 cursor = cnx.cursor()
 create_database(cnx,cursor)
 
@@ -96,7 +96,7 @@ def login():
         username= request.form['username']
         password= request.form['password']
 
-        cnx = mysql.connector.connect(user='root', password='dacjd156n.',host='some-mysql')
+        cnx = mysql.connector.connect(user='root', password='goose',host='localhost')
         cursor = cnx.cursor()
         insert_user(cnx,cursor,username,password)
 
