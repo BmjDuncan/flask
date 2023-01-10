@@ -11,8 +11,8 @@ TABLES['key'] = (
     "  keynum varchar(64) NOT NULL,"
     "  PRIMARY KEY (ID)"
     ") ENGINE=InnoDB")
-CREATE USER 'root'@'localhost';
-GRANT ALL PRIVILEGES ON dbTest.* To 'root'@'localhost' IDENTIFIED BY 'goose';
+CREATE USER 'root'@'localhost'
+GRANT ALL PRIVILEGES ON AccessKeys.* To 'root'@'localhost' IDENTIFIED BY 'goose'
 
 
 def create_database(cnx,cursor):
