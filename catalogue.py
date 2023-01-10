@@ -1,7 +1,6 @@
 from datetime import *
 import time
 import sys
-from db import *
 import json
 import requests
 import mysql
