@@ -5,4 +5,6 @@ COPY *.py /home/
 COPY templates/*.* /home/templates/
 WORKDIR /home
 RUN pip install -r requirements.txt
+ENTRYPOINT ["python"]
+CMD ["catalogue.py"]
 
