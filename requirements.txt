@@ -9,4 +9,3 @@ gunicorn==20.1.0
 mysql
 mysql.connector
 requests
-MySQLdb.cursors
