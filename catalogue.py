@@ -21,7 +21,6 @@ app.config['MYSQL_HOST'] = '35.195.173.196'
 app.config['MYSQL_USER'] = 'admin'
 app.config['MYSQL_PASSWORD'] = 'goose'
 app.config['MYSQL_DB'] = 'login'
-app.config['MYSQL_PORT']=3306
 
 # Intialize MySQL
 mysql = MySQL(app)
@@ -109,7 +108,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         # Check if account exists using MySQL
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor = mysql.connector.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM accounts WHERE username = %s AND password = %s', (username, password,))
         # Fetch one record and return result
         account = cursor.fetchone()
