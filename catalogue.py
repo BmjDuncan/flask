@@ -21,6 +21,7 @@ app.config['MYSQL_HOST'] = '35.195.173.196'
 app.config['MYSQL_USER'] = 'admin'
 app.config['MYSQL_PASSWORD'] = 'goose'
 app.config['MYSQL_DB'] = 'login'
+app.config['MYSQL_PORT']='3306'
 
 # Intialize MySQL
 mysql = MySQL(app)
