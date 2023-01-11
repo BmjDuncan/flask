@@ -99,7 +99,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         # Check if account exists using MySQL
-        con = mysql.connector.connect(user='root', password='goose',host='localhost')
+        con = mysql.connector.connect(user='root', password='goose',host='35.195.173.196',port='3306')
         cursor=con.cursor()
         cursor.execute('SELECT * FROM accounts WHERE username = %s AND password = %s', (username, password,))
         # Fetch one record and return result
