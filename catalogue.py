@@ -17,7 +17,7 @@ app.debug = True
 app.secret_key = 'your secret key'
 
 # Enter your database connection details below
-app.config['MYSQL_HOST'] = '35.195.173.196:3306'
+app.config['MYSQL_HOST'] = '35.195.173.196'
 app.config['MYSQL_USER'] = 'admin'
 app.config['MYSQL_PASSWORD'] = 'goose'
 app.config['MYSQL_DB'] = 'login'
@@ -98,7 +98,7 @@ def cat_page():
         html=html+'</div>'
     return html
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def login():
     # Output message if something goes wrong...
     msg = ''
