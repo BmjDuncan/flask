@@ -14,16 +14,7 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 app.debug = True
 
-app.secret_key = 'your secret key'
 
-# Enter your database connection details below
-app.config['MYSQL_HOST'] = '35.195.173.196'
-app.config['MYSQL_USER'] = 'admin'
-app.config['MYSQL_PASSWORD'] = 'goose'
-app.config['MYSQL_DB'] = 'login'
-
-# Intialize MySQL
-mysql = MySQL(app)
 
 @app.route('/Video/<video>')
 def video_page(video):
@@ -108,7 +99,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         # Check if account exists using MySQL
-        cursor = mysql.connector.cursor(MySQLdb.cursors.DictCursor)
+        cursor = mysql.connector.cursor(user='admin', password='goose',host='35.195.173.196')
         cursor.execute('SELECT * FROM accounts WHERE username = %s AND password = %s', (username, password,))
         # Fetch one record and return result
         account = cursor.fetchone()
