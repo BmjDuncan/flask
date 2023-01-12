@@ -98,7 +98,9 @@ def cat_page():
           return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
         jResp = response.json()
         print (type(jResp))
-        html="<h1>Your Videos</h1>"
+        if 'username' in session:
+            string=session['username']
+        html="<h1>Hello "+string+", Here are your videos!</h1>"
         html=html+'<a href="http://34.79.241.61/logout"><button>Logout</button></a>'
         for cat in jResp2:
             html=html+'<div style="display:flex">'
