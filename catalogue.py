@@ -44,7 +44,36 @@ def video_page(video):
                   if (key2=="pic"):
                       pic=index[key][key2]
     return render_template('video.html', name=video,file=videofile,pic=pic)
-
+    
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    url = "http://35.195.173.196/myflix/users"
+    response=requests.get(url)
+    jResp=response.json()
+    # Output message if something goes wrong...
+    msg = ''
+    # Check if "username" and "password" POST requests exist (user submitted form)
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
+        # Create variables for easy access
+        username = request.form['username']
+        password = request.form['password']
+        # Check if account exists using MySQL
+        for i in jResp:
+            if (i['username']==username and i['password']==password): 
+                account={'username':username}
+                
+        # If account exists in accounts table in out database
+        try:
+            # Create session data, we can access this data in other routes
+            session['loggedin'] = True
+            session['username'] = account['username']
+            # Redirect to cat page
+            return redirect(url_for(' '))
+        except:
+            # Account doesnt exist or username/password incorrect
+            msg = 'Incorrect username/password!'
+    # Show the login form with message (if any)
+    return render_template('index.html', msg=msg)
 @app.route('/')
 def cat_page():  
     if 'loggedin' in session:
@@ -90,36 +119,6 @@ def cat_page():
             html=html+'</div>'
         return html
     return redirect(url_for('login'))
-    
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    url = "http://35.195.173.196/myflix/users"
-    response=requests.get(url)
-    jResp=response.json()
-    # Output message if something goes wrong...
-    msg = ''
-    # Check if "username" and "password" POST requests exist (user submitted form)
-    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
-        # Create variables for easy access
-        username = request.form['username']
-        password = request.form['password']
-        # Check if account exists using MySQL
-        for i in jResp:
-            if (i['username']==username and i['password']==password): 
-                account={'username':username}
-                
-        # If account exists in accounts table in out database
-        try:
-            # Create session data, we can access this data in other routes
-            session['loggedin'] = True
-            session['username'] = account['username']
-            # Redirect to cat page
-            return redirect(url_for(' '))
-        except:
-            # Account doesnt exist or username/password incorrect
-            msg = 'Incorrect username/password!'
-    # Show the login form with message (if any)
-    return render_template('index.html', msg=msg)
 
 @app.route('/logout')
 def logout():
