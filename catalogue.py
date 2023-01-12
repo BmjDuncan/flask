@@ -104,7 +104,7 @@ def login():
         # Check if account exists using MySQL
         for i in jResp:
             if (i['username']==username and i['password']==password): 
-                account=True
+                account={'username':username}
                 
         # If account exists in accounts table in out database
         if account:
