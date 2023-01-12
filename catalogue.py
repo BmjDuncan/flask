@@ -91,7 +91,7 @@ def cat_page():
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
-    url = "http://34.76.74.49/myflix/videos"
+    url = "http://35.195.173.196/myflix/users"
     response=requests.get(url)
     jResp=response.json()
     # Output message if something goes wrong...
