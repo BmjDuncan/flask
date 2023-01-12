@@ -15,7 +15,6 @@ app = Flask(__name__)
 app.debug = True
 app.secret_key = 'your secret key'
 
-
 @app.route('/Video/<video>')
 def video_page(video):
     print (video)
@@ -74,6 +73,7 @@ def login():
             msg = 'Incorrect username/password!'
     # Show the login form with message (if any)
     return render_template('index.html', msg=msg)
+
 @app.route('/')
 def cat_page():  
     if 'loggedin' in session:
