@@ -73,7 +73,7 @@ def login():
             return redirect("http://34.79.241.61/")
         except:
             # Account doesnt exist or username/password incorrect
-            msg = username
+            msg = "Incorrect username or password"
     # Show the login form with message (if any)
     return render_template('index.html', msg=msg)
 
@@ -99,7 +99,6 @@ def cat_page():
         jResp = response.json()
         print (type(jResp))
         html="<h1>Your Videos</h1>"
-        string=
         html=html+'<a href="https://34.79.241.61/logout"><button>Logout</button></a>'
         for cat in jResp2:
             html=html+'<div style="display:flex">'
