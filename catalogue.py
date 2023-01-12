@@ -70,14 +70,14 @@ def login():
             session['username'] = account['username']
             session['loggedin'] = True
             # Redirect to cat page
-            return redirect(url_for('cat'))
+            return redirect("http://34.79.241.61/")
         except:
             # Account doesnt exist or username/password incorrect
             msg = username
     # Show the login form with message (if any)
     return render_template('index.html', msg=msg)
 
-@app.route('/cat')
+@app.route('/')
 def cat_page():  
     if 'loggedin' in session:
         url = "http://34.76.74.49/myflix/videos"
