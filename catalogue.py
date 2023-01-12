@@ -113,7 +113,7 @@ def login():
             session['username'] = account['username']
             # Redirect to home page
             return 'Logged in successfully!'
-        else:
+        except:
             # Account doesnt exist or username/password incorrect
             msg = 'Incorrect username/password!'
     # Show the login form with message (if any)
