@@ -91,6 +91,9 @@ def cat_page():
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
+    url = "http://34.76.74.49/myflix/videos"
+    response=requests.get(url)
+    jResp=response.json()
     # Output message if something goes wrong...
     msg = ''
     # Check if "username" and "password" POST requests exist (user submitted form)
@@ -99,16 +102,14 @@ def login():
         username = request.form['username']
         password = request.form['password']
         # Check if account exists using MySQL
-        con = mysql.connector.connect(user='root', password='goose',host='35.195.173.196',port='3306')
-        cursor=con.cursor()
-        cursor.execute('SELECT * FROM accounts WHERE username = %s AND password = %s', (username, password,))
-        # Fetch one record and return result
-        account = cursor.fetchone()
+        for i in jResp:
+            if (i['username']=="ben" and i['password']=="ben1"): 
+                account=True
+                
         # If account exists in accounts table in out database
         if account:
             # Create session data, we can access this data in other routes
             session['loggedin'] = True
-            session['id'] = account['id']
             session['username'] = account['username']
             # Redirect to home page
             return 'Logged in successfully!'
