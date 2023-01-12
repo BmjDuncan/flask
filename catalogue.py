@@ -116,7 +116,7 @@ def cat_page():
                             html=html+'<p style="text-align:center;">'+name.title()+'<p>'
                             ServerIP=request.host.split(':')[0]
                             html=html+'<a href="http://'+ServerIP+'/Video/'+uuid+'">'
-                            html=html+'<img src="http://34.79.49.178/pics/'+thumb+'">'
+                            html=html+'<img src="http://34.79.49.178/pics/'+thumb+'" width="50" height="50">'
                             html=html+"</a>"
                             html=html+'</div>'
             html=html+'</div>'
