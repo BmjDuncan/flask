@@ -45,7 +45,7 @@ def video_page(video):
                       pic=index[key][key2]
     return render_template('video.html', name=video,file=videofile,pic=pic)
 
-@app.route('/cat')
+@app.route('/')
 def cat_page():  
     if 'loggedin' in session:
         url = "http://34.76.74.49/myflix/videos"
@@ -113,8 +113,8 @@ def login():
             # Create session data, we can access this data in other routes
             session['loggedin'] = True
             session['username'] = account['username']
-            # Redirect to home page
-            return redirect(url_for('cat'))
+            # Redirect to cat page
+            return redirect(url_for(''))
         except:
             # Account doesnt exist or username/password incorrect
             msg = 'Incorrect username/password!'
