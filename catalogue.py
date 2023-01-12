@@ -73,7 +73,7 @@ def login():
             return redirect(url_for('cat'))
         except:
             # Account doesnt exist or username/password incorrect
-            msg = 'Incorrect username/password!'
+            msg = username
     # Show the login form with message (if any)
     return render_template('index.html', msg=msg)
 
@@ -116,7 +116,7 @@ def cat_page():
                             html=html+'<p style="text-align:center;">'+name.title()+'<p>'
                             ServerIP=request.host.split(':')[0]
                             html=html+'<a href="http://'+ServerIP+'/Video/'+uuid+'">'
-                            html=html+'<img src="http://34.79.49.178/pics/'+thumb+'" width="50" height="50">'
+                            html=html+'<img src="http://34.79.49.178/pics/'+thumb+'" width="200" height="200">'
                             html=html+"</a>"
                             html=html+'</div>'
             html=html+'</div>'
