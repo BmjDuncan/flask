@@ -66,7 +66,7 @@ def cat_page():
           return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
         jResp = response.json()
         print (type(jResp))
-        html="<h1> '+session['username']+'Your Videos</h1>"
+        html="<h1> "+session['username']+"Your Videos</h1>"
         for cat in jResp2:
             html=html+'<div style="display:flex">'
             html=html+'<h2>'+cat["category"].title()+'</h2>'
