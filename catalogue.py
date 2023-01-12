@@ -99,7 +99,7 @@ def cat_page():
         jResp = response.json()
         print (type(jResp))
         html="<h1>Your Videos</h1>"
-        html=html+'<a href="https://34.79.241.61/logout"><button>Logout</button></a>'
+        html=html+'<a href="http://34.79.241.61/logout"><button>Logout</button></a>'
         for cat in jResp2:
             html=html+'<div style="display:flex">'
             html=html+'<h2>'+cat["category"].title()+'</h2>'
