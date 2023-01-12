@@ -17,33 +17,35 @@ app.secret_key = 'your secret key'
 
 @app.route('/Video/<video>')
 def video_page(video):
-    print (video)
-    url = 'http://34.76.74.49/myflix/videos?filter={"video.uuid":"'+video+'"}'
-    headers = {}
-    payload = json.dumps({ })
-    print (request.endpoint)
-    response = requests.get(url)
-    print (url)
-    if response.status_code != 200:
-      print("Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message']))
-      return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
-    jResp = response.json()
-    print (type(jResp))
-    print (jResp)
-    for index in jResp:
-        for key in index:
-           if (key !="_id"):
-              print (index[key])
-              for key2 in index[key]:
-                  print (key2,index[key][key2])
-                  if (key2=="Name"):
-                      video=index[key][key2]
-                  if (key2=="file"):
-                      videofile=index[key][key2]
-                  if (key2=="pic"):
-                      pic=index[key][key2]
-    return render_template('video.html', name=video,file=videofile,pic=pic)
-    
+    if 'loggedin' in session:
+        print (video)
+        url = 'http://34.76.74.49/myflix/videos?filter={"video.uuid":"'+video+'"}'
+        headers = {}
+        payload = json.dumps({ })
+        print (request.endpoint)
+        response = requests.get(url)
+        print (url)
+        if response.status_code != 200:
+          print("Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message']))
+          return "Unexpected response: {0}. Status: {1}. Message: {2}".format(response.reason, response.status, jResp['Exception']['Message'])
+        jResp = response.json()
+        print (type(jResp))
+        print (jResp)
+        for index in jResp:
+            for key in index:
+               if (key !="_id"):
+                  print (index[key])
+                  for key2 in index[key]:
+                      print (key2,index[key][key2])
+                      if (key2=="Name"):
+                          video=index[key][key2]
+                      if (key2=="file"):
+                          videofile=index[key][key2]
+                      if (key2=="pic"):
+                          pic=index[key][key2]
+        return render_template('video.html', name=video,file=videofile,pic=pic)
+    return redirect(url_for('login'))
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     url = "http://35.195.173.196/myflix/users"
@@ -56,7 +58,8 @@ def login():
         # Create variables for easy access
         username = request.form['username']
         password = request.form['password']
-        # Check if account exists using MySQL
+        # Check if account exists
+        account={}
         for i in jResp:
             if (i['username']==username and i['password']==password): 
                 account={'username':username}
@@ -64,17 +67,17 @@ def login():
         # If account exists in accounts table in out database
         try:
             # Create session data, we can access this data in other routes
-            session['loggedin'] = True
             session['username'] = account['username']
+            session['loggedin'] = True
             # Redirect to cat page
-            return redirect(url_for(' '))
+            return redirect(url_for('cat'))
         except:
             # Account doesnt exist or username/password incorrect
             msg = 'Incorrect username/password!'
     # Show the login form with message (if any)
     return render_template('index.html', msg=msg)
 
-@app.route('/')
+@app.route('/cat')
 def cat_page():  
     if 'loggedin' in session:
         url = "http://34.76.74.49/myflix/videos"
