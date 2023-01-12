@@ -13,7 +13,7 @@ from flask import Flask, request, session, g, redirect, url_for, abort, render_t
 from flask_mysqldb import MySQL
 app = Flask(__name__)
 app.debug = True
-
+app.secret_key = 'your secret key'
 
 
 @app.route('/Video/<video>')
