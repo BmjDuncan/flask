@@ -100,7 +100,7 @@ def cat_page():
         print (type(jResp))
         if 'username' in session:
             string=session['username']
-        html="<h1>Hello "+string+", Here are your videos!</h1>"
+        html="<h1>Hello "+string+". Here are your videos!</h1>"
         html=html+'<a href="http://34.79.241.61/logout"><button>Logout</button></a>'
         for cat in jResp2:
             html=html+'<div style="display:flex">'
